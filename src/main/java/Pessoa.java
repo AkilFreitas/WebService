@@ -25,6 +25,10 @@ public class Pessoa {
     String nome;
     int idade;
 
+    Pessoa(String name, double price, String description) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdade() {
         return idade;
     }

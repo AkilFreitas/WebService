@@ -9,30 +9,15 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status; 
-/**
- * Root resource (exposed at "myresource" path)
- */
-/*
-Pronto, como eu tinha dito, esse path aqui (que vem
-depois do caminho da aplicação (vide @ApplicationPath)
-é o caminho que eu dou pra chegar nessa classe, que,
-como instruído abaixo, produz um texto ("Olá Mundo").
-Você acessa essa resposta, no meu caso, pelo endereço:
-http://localhost:8084/webService/meuwebservice
-Ou seja, http://localhost:8084/webService é o projeto,
-o "/" (webService"/"meuwebservice) o caminho da aplicação
-que definimos lá no @ApplicationPath, e o "meuwebservice"
-é o retorno do método olaMundo(), que é executado pois
-definimos o caminho "meuwebservice" para esta classe
-abaixo.
-*/
+
+
 @Path("meuwebservice")
 public class MyApplicationController {
     
-    PessoaDao pessoaDao;
+    static PessoaDao pessoaDao;
     
     public MyApplicationController(){
-        pessoaDao = new PessoaDao();
+        
     }
     /**
      * Method handling HTTP GET requests. The returned object will be sent
@@ -40,6 +25,7 @@ public class MyApplicationController {
      *
      * @return String that will be returned as a text/plain response.
      */
+
     
     //http://localhost:8080/WebService/meuwebservice/ola
        @GET
@@ -59,21 +45,33 @@ public class MyApplicationController {
         return Response.status(Status.OK).build();
         
     }
+    //http://localhost:8080/WebService/meuwebservice/remover?nome=junior?idade=15
     @DELETE
-    @Path("delete")
-    public Response delete(@QueryParam("nome") String nome){
-          Pessoa pessoa = new Pessoa(nome);
-        pessoaDao.getInstance().remover(pessoa);
+    @Path("remover")
+    public Response delete(@QueryParam("id") String id){
+        PessoaDao.getInstance().remover(id);
         return Response.status(Status.OK).build();
     }
     
-// http://localhost:8084/ExemploCrudREST/meuwebservice/consultar
+ /*    @POST
+    @Path("atualizar")
+    public Response update(@QueryParam("id") String id,
+                           @QueryParam("name") String name, 
+                           @QueryParam("price") double price,
+                           @QueryParam("description") String description){
+        Pessoa pessoas = new Pessoa(name,price,description);
+        PessoaDao.getInstance().alterar(id, pessoas);
+        return Response.status(Status.OK).build();
+    }*/
+    
+ //http://localhost:8084/ExemploCrudREST/meuwebservice/consultar
     @GET
     @Path("Buscar")
     public String buscar() {
         return this.pessoaDao.recuperandoPessoas().toString();
 
-    }
+   }
     
+
 
 }

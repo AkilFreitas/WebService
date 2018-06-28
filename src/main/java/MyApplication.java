@@ -10,10 +10,7 @@ import javax.ws.rs.core.Application;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-/**
- *
- * @author pronatec
- */
+
 @ApplicationPath("/")
 public class MyApplication extends Application {
 

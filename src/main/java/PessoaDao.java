@@ -30,6 +30,11 @@ public class PessoaDao {
         this.pessoas.add(pessoa);
     }
     
+   /* public boolean atualizar(String nome, int idade){
+        this.pessoas.put(nome,idade);
+        return true;
+    }
+    */
     public void substituir(Pessoa pessoa) {
         for (Pessoa c : this.pessoas) {
             if (c.getNome().equals(pessoa.getNome())) {
@@ -38,10 +43,29 @@ public class PessoaDao {
         }
     }
 
-    public boolean remover(Pessoa pessoa) {
-        return this.pessoas.remove(pessoa);
+   /* public boolean remover(String nome, int idade) {
+      this.pessoas.remove(nome);
+         this.pessoas.remove(idade);
+        return true;
+    }*/
+    public boolean remover(String id){
+        this.pessoas.remove(id);
+        return true;
     }
 
+    /*public boolean atualizar(String id, Pessoa pessoa){
+        this.pessoas.put(id,pessoa);
+        return true;
+    }
+    */
+    
+      public void alterar(Pessoa pessoa) {
+        for (Pessoa c : this.pessoas) {
+            if (c.getNome().equals(pessoa.getNome())) {
+                c.setNome(pessoa.getNome());
+            }
+        }
+    }
     //public void alterar(Pessoa pessoa) {
       //  for (Pessoa c : this.pessoas) {
         //    if (c.getNome().equals(pessoa.getNome())) {
