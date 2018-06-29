@@ -74,12 +74,12 @@ public class MyApplicationController {
     @GET
     @Path("atualizar")
     @Produces(MediaType.APPLICATION_JSON)
-    public String atualizar(@QueryParam("nome") String nome, @QueryParam("novoNome") String novoNome,
+    public Response atualizar(@QueryParam("nome") String nome, @QueryParam("novoNome") String novoNome,
                             @QueryParam("nome") int idade, @QueryParam("novaIdade") int novaIdade){
         Pessoa p = new Pessoa(nome, idade);
-        pessoaDao.getInstance().atualizar(novoNome,novaIdade);
-        return new Gson().toJson(p);
-    }    
+        Pessoa novaPessoa = new Pessoa(novoNome,novaIdade);
+        pessoaDao.getInstance().atualizar(novaPessoa);
+        return Response.status(Status.OK).build();
    /* @POST
     @Path("atualizar")
     public Response atualizar(@QueryParam("nome") String nome,
@@ -87,4 +87,4 @@ public class MyApplicationController {
         Pessoa game = new Pessoa(nome, idade);
         pessoaDao.getInstance().atualizar(nome, idade);
         return Response.status(Status.OK).build();
-    }*/ }
+    }*/ }}

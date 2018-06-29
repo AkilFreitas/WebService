@@ -30,15 +30,13 @@ public class PessoaDao {
         this.pessoas.add(pessoa);
     }
     
-     public boolean atualizar(Pessoa pessoa){
-        for(int i=0;i<this.pessoas.size();i++){
-            if(this.pessoas.get(i).nome==pessoa.nome)
-                this.pessoas.set(i,pessoa);
-             if(this.pessoas.get(i).idade==pessoa.idade)
-                this.pessoas.set(i,pessoa);
+public boolean atualizar(Pessoa pessoa) {
+        for (int i = 0; i < this.pessoas.size(); i++) {
+            if (this.pessoas.get(i).nome == pessoa.nome) {
+                this.pessoas.set(i, pessoa);
                 return true;
+            }
         }
-        
         return false;
     }
    /*public boolean atualizar(String nome,int idade){
