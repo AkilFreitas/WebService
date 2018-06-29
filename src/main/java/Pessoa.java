@@ -25,21 +25,19 @@ public class Pessoa {
     String nome;
     int idade;
 
-    Pessoa(String name, double price, String description) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public int getIdade() {
+    public Pessoa(String nome , int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    } 
+    
+   public int getIdade() {
         return idade;
     }
 
     public void setIdade(int idade) {
         this.idade = idade;
     }
-    
-    public Pessoa(String nome){
-        this.nome = nome;
-    }
+ 
 
     public String getNome() {
         return nome;
@@ -48,6 +46,8 @@ public class Pessoa {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+    
 
     @Override
     public boolean equals(Object obj) {
